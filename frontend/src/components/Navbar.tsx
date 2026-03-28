@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LayoutDashboard, Search, LogOut, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/app/providers";
+import { useTheme } from "@/providers";
 
 export function Navbar() {
   const pathname = usePathname();

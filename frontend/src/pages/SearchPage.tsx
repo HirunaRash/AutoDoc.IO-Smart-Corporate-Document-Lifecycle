@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 import { semanticSearch, SearchResult, DocumentCategory } from "@/lib/api";
 import { Navbar } from "@/components/Navbar";

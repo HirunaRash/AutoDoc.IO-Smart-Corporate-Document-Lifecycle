@@ -1,4 +1,3 @@
-"use client";
 import { useState, useRef, DragEvent } from "react";
 import { uploadDocument } from "@/lib/api";
 import { Upload, X, FileText, CheckCircle } from "lucide-react";

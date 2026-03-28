@@ -1,4 +1,3 @@
-"use client";
 import { DocumentOut, deleteDocument } from "@/lib/api";
 import { FileText, Trash2, Clock, CheckCircle, AlertCircle, Loader2, Tag } from "lucide-react";
 
