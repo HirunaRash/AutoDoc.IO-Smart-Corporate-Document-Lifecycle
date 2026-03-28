@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════
+   NEUMORPHISM DESIGN SYSTEM — AutoDoc.IO
+   Light: base #e4e9f0  |  Dark: base #1a1e2e
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --neu-bg:           #e4e9f0;
+  --neu-bg-dark:      #d0d6e0;
+  --neu-shadow-light: rgba(255, 255, 255, 0.85);
+  --neu-shadow-dark:  rgba(163, 177, 198, 0.65);
+  --neu-accent:      #6c63ff;
+  --neu-accent-2:    #a78bfa;
+  --neu-text:        #44476a;
+  --neu-text-muted:  #8890a4;
+  --neu-text-light:  #b2b8cc;
+  --neu-success:     #22c55e;
+  --neu-danger:      #ef4444;
+  --neu-warning:     #f59e0b;
+
+  /* ── Composite shadow tokens ─────────────────────────────── */
+  --shadow-raised:    8px 8px 20px var(--neu-shadow-dark), -8px -8px 20px var(--neu-shadow-light);
+  --shadow-raised-sm: 4px 4px 10px var(--neu-shadow-dark), -4px -4px 10px var(--neu-shadow-light);
+  --shadow-raised-lg: 14px 14px 32px var(--neu-shadow-dark), -14px -14px 32px var(--neu-shadow-light);
+  --shadow-inset:     inset 6px 6px 14px var(--neu-shadow-dark), inset -6px -6px 14px var(--neu-shadow-light);
+  --shadow-inset-sm:  inset 3px 3px 8px var(--neu-shadow-dark), inset -3px -3px 8px var(--neu-shadow-light);
+}
+
+/* ── Dark mode overrides ─────────────────────────────────────── */
+[data-theme="dark"] {
+  --neu-bg:           #1a1e2e;
+  --neu-bg-dark:      #141826;
+  --neu-shadow-light: rgba(255, 255, 255, 0.05);
+  --neu-shadow-dark:  rgba(0, 0, 0, 0.55);
+  --neu-text:         #d0d4ee;
+  --neu-text-muted:   #6a7090;
+  --neu-text-light:   #3e4468;
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--neu-bg);
+  color: var(--neu-text);
+  font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sora for all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sora), 'Sora', system-ui, sans-serif;
+}
+
+/* ── Select / option dark mode ─────────────────────────────── */
+select { background: var(--neu-bg); color: var(--neu-text); }
+option { background: var(--neu-bg); color: var(--neu-text); }
+
+/* ── Custom scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--neu-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--neu-shadow-dark);
+  border-radius: 99px;
+}
+
+/* ══ NEUMORPHIC SHADOWS ════════════════════════════════════════ */
+
+/* Raised — floats above surface */
+.neu-raised {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-raised);
+}
+.neu-raised-sm {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-raised-sm);
+}
+.neu-raised-lg {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-raised-lg);
+}
+
+/* Inset — pressed into surface */
+.neu-inset {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-inset);
+}
+.neu-inset-sm {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-inset-sm);
+}
+
+/* Flat — sits flush on surface */
+.neu-flat {
+  background: var(--neu-bg);
+  box-shadow: none;
+}
+
+/* ── Accent button (convex + color) ───────────────────────── */
+.neu-btn-accent {
+  background: linear-gradient(145deg, #7c74ff, #5a52e0);
+  box-shadow:
+    6px 6px 14px rgba(108, 99, 255, 0.40),
+    -3px -3px 8px rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.neu-btn-accent:hover:not(:disabled) {
+  box-shadow:
+    8px 8px 18px rgba(108, 99, 255, 0.50),
+    -4px -4px 10px rgba(255, 255, 255, 0.30);
+  transform: translateY(-1px);
+}
+.neu-btn-accent:active:not(:disabled) {
+  box-shadow:
+    inset 4px 4px 10px rgba(0,0,0,0.20),
+    inset -2px -2px 6px rgba(255,255,255,0.10);
+  transform: translateY(0);
+}
+.neu-btn-accent:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Ghost / secondary button ─────────────────────────────── */
+.neu-btn {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-raised-sm);
+  color: var(--neu-text);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.neu-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-raised);
+  transform: translateY(-1px);
+}
+.neu-btn:active:not(:disabled) {
+  box-shadow: var(--shadow-inset);
+  transform: translateY(0);
+}
+
+/* ── Input ────────────────────────────────────────────────── */
+.neu-input {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-inset-sm);
+  border: none;
+  outline: none;
+  color: var(--neu-text);
+  transition: box-shadow 0.2s ease;
+}
+.neu-input::placeholder { color: var(--neu-text-light); }
+.neu-input:focus {
+  box-shadow:
+    inset 5px 5px 12px var(--neu-shadow-dark),
+    inset -5px -5px 12px var(--neu-shadow-light),
+    0 0 0 3px rgba(108, 99, 255, 0.18);
+}
+
+/* ── Toggle pill (active category filter) ─────────────────── */
+.neu-pill-active {
+  background: linear-gradient(145deg, #7c74ff, #5a52e0);
+  box-shadow:
+    inset 3px 3px 7px rgba(0,0,0,0.18),
+    inset -2px -2px 5px rgba(255,255,255,0.12);
+  color: #fff;
+}
+.neu-pill {
+  background: var(--neu-bg);
+  box-shadow: var(--shadow-raised-sm);
+  color: var(--neu-text-muted);
+  transition: all 0.2s ease;
+}
+.neu-pill:hover { color: var(--neu-text); }
+
+/* ══ ANIMATIONS ═══════════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes shimmer {
+  0%   { background-position: -500px 0; }
+  100% { background-position:  500px 0; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); opacity: 0.7; }
+  70%  { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.animate-fade-up { animation: fadeUp 0.5s ease both; }
+.animate-fade-in { animation: fadeIn 0.4s ease both; }
+.animate-float   { animation: float 3.5s ease-in-out infinite; }
+.animate-spin    { animation: spin 1s linear infinite; }
+.animate-pulse-ring { animation: pulse-ring 2.5s ease-in-out infinite; }
+
+.stagger-1 { animation-delay: 0.06s; }
+.stagger-2 { animation-delay: 0.12s; }
+.stagger-3 { animation-delay: 0.18s; }
+.stagger-4 { animation-delay: 0.24s; }
+.stagger-5 { animation-delay: 0.30s; }
+
+/* ── Skeleton ─────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--neu-bg-dark) 25%,
+    var(--neu-bg) 50%,
+    var(--neu-bg-dark) 75%);
+  background-size: 500px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+/* ── Status badge colors ──────────────────────────────────── */
+.badge-pending    { background: var(--neu-bg-dark); color: var(--neu-text-muted); box-shadow: var(--shadow-inset-sm); }
+.badge-processing { background: #dde8ff; color: #4f6ef7; box-shadow: inset 2px 2px 6px rgba(79,110,247,0.15), inset -2px -2px 6px #fff; }
+.badge-ready      { background: #dcfce7; color: #16a34a; box-shadow: inset 2px 2px 6px rgba(22,163,74,0.15),  inset -2px -2px 6px #fff; }
+.badge-failed     { background: #fee2e2; color: #dc2626; box-shadow: inset 2px 2px 6px rgba(220,38,38,0.15),  inset -2px -2px 6px #fff; }
+
+[data-theme="dark"] .badge-processing { background: #1a2548; color: #6b8ef7; box-shadow: inset 2px 2px 6px rgba(0,0,0,0.3), inset -2px -2px 6px rgba(255,255,255,0.03); }
+[data-theme="dark"] .badge-ready      { background: #0f2a1a; color: #4ade80; box-shadow: inset 2px 2px 6px rgba(0,0,0,0.3), inset -2px -2px 6px rgba(255,255,255,0.03); }
+[data-theme="dark"] .badge-failed     { background: #2a0f0f; color: #f87171; box-shadow: inset 2px 2px 6px rgba(0,0,0,0.3), inset -2px -2px 6px rgba(255,255,255,0.03); }
+
+/* ── Theme transition ─────────────────────────────────────── */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+/* Don't transition these (can cause jank) */
+.no-transition, input, button, a {
+  transition: none;
+}
+button, a {
+  transition: all 0.2s ease;
+}
