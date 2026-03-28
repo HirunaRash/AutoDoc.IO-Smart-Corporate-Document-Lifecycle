@@ -1,12 +1,10 @@
-"use client";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LayoutDashboard, Search, LogOut, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/providers";
 
 export function Navbar() {
-  const pathname = usePathname();
-  const router   = useRouter();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { theme, toggle } = useTheme();
 
   const links = [
@@ -24,7 +22,7 @@ export function Navbar() {
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
 
         {/* Brand */}
-        <Link href="/dashboard" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
+        <Link to="/dashboard" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
           <div style={{
             width: 40, height: 40, borderRadius: 14,
             background: "var(--neu-bg)",
@@ -54,7 +52,7 @@ export function Navbar() {
           {links.map(({ href, label, icon: Icon }) => {
             const active = pathname === href;
             return (
-              <Link key={href} href={href} style={{ textDecoration: "none" }}>
+              <Link key={href} to={href} style={{ textDecoration: "none" }}>
                 <div style={{
                   display: "flex", alignItems: "center", gap: "0.5rem",
                   padding: "0.55rem 1.1rem", borderRadius: 14,
@@ -108,7 +106,7 @@ export function Navbar() {
 
           {/* Logout */}
           <button
-            onClick={() => { localStorage.removeItem("token"); router.push("/"); }}
+            onClick={() => { localStorage.removeItem("token"); navigate("/"); }}
             style={{
               display: "flex", alignItems: "center", gap: "0.5rem",
               padding: "0.55rem 1rem", borderRadius: 14,
