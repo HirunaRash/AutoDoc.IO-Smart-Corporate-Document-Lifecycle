@@ -1,0 +1,32 @@
+# Web framework
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.1
+python-multipart>=0.0.9
+
+# Database
+sqlalchemy>=2.0.30
+asyncpg>=0.30.0
+alembic>=1.13.1
+pydantic-settings>=2.3.0
+
+# Auth
+bcrypt>=4.0.0
+python-jose[cryptography]>=3.3.0
+
+# AI / ML
+openai>=1.35.3
+huggingface-hub>=0.23.4
+requests>=2.32.3
+
+# Document parsing
+pdfplumber>=0.11.0
+python-docx>=1.1.2
+
+# Vector DB
+pinecone>=4.1.0
+
+# Object storage
+boto3>=1.34.131
+
+# Utilities
+python-dotenv>=1.0.1
